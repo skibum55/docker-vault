@@ -13,5 +13,5 @@ RUN mkdir -p /etc/vault
 COPY config.hcl /etc/vault/config.hcl
 
 ENTRYPOINT ["vault"]
-CMD ["server", "-config=/etc/vault/config.hcl"]
+CMD ["server", "-dev"]
 EXPOSE 8200
