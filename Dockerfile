@@ -9,9 +9,6 @@ RUN \
   rm vault_${VAULT_VERSION}_linux_amd64.zip &&\
   mv vault /usr/bin
 
-RUN mkdir -p /etc/vault
-COPY config.hcl /etc/vault/config.hcl
-
 ENTRYPOINT ["vault"]
 CMD ["server", "-dev"]
 EXPOSE 8200
