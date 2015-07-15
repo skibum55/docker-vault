@@ -14,4 +14,6 @@ docker run \
   buth/vault server -config=/etc/vault/config.hcl
 ```
 
+If you require SSL CA certificates – which you'll need to make any HTTPS request – mount them from the host system to `/etc/ssl/certs`. For instance, when using [CoreOS](https://coreos.com/), add `-v /usr/share/ca-certificates:/etc/ssl/certs:ro` to your command.
+
 See the [Docker Hub page](https://registry.hub.docker.com/u/buth/vault/) for available tags.
