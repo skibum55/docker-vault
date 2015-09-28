@@ -1,14 +1,11 @@
 FROM busybox
 
-ENV VAULT_VERSION=0.2.0
-ENV VAULT_SHA256=b4b64fcea765ebfc7cdbae9cdd2c32bff130ca51f15b9cf47194f112fd5515cf
-COPY vault.hcl \etc\
+COPY ./vault.hcl /etc/ 
+
 RUN \
-  wget http://dl.bintray.com/mitchellh/vault/vault_${VAULT_VERSION}_linux_amd64.zip &&\
-  echo "${VAULT_SHA256}  vault_${VAULT_VERSION}_linux_amd64.zip" | sha256sum -c - &&\
-  unzip vault_${VAULT_VERSION}_linux_amd64.zip &&\
-  rm vault_${VAULT_VERSION}_linux_amd64.zip &&\
-  mv vault /usr/bin
+  wget -O /tmp/vault_0.3.0_linux_amd64.zip http://dl.bintray.com/mitchellh/vault/vault_0.3.0_linux_amd64.zip &&\
+  unzip /tmp/vault_0.3.0_linux_amd64.zip -d /tmp &&\
+  mv /tmp/vault /usr/sbin
 
 ENTRYPOINT ["vault"]
 CMD ["server", "-dev","-config","\etc\vault.hcl"]
