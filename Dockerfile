@@ -1,11 +1,14 @@
-FROM busybox
+FROM voxxit/base:alpine
 
-COPY ./vault.hcl /etc/ 
+COPY ./vault.hcl /
 
-RUN \
-  wget -O /tmp/vault_0.3.0_linux_amd64.zip http://dl.bintray.com/mitchellh/vault/vault_0.3.0_linux_amd64.zip &&\
-  unzip /tmp/vault_0.3.0_linux_amd64.zip -d /tmp &&\
-  mv /tmp/vault /usr/sbin
+RUN  wget http://dl.bintray.com/mitchellh/vault/vault_0.1.2_linux_amd64.zip \
+  && unzip vault_0.1.2_linux_amd64.zip \
+  && mv vault /usr/local/bin/ \
+  && rm -f vault_0.1.2_linux_amd64.zip
 
-ENTRYPOINT ["vault"]
-CMD ["server", "-dev","-config","\etc\vault.hcl"]
+EXPOSE 8200
+
+ENTRYPOINT [ "vault" ]
+
+CMD [ "server", "-dev","-config","vault.hcl" ]
