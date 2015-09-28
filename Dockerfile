@@ -12,4 +12,3 @@ RUN \
 
 ENTRYPOINT ["vault"]
 CMD ["server", "-dev"]
-EXPOSE $PORT
