@@ -1,4 +1,5 @@
 FROM voxxit/base:alpine
+MAINTAINER Sean Keery <skibum55@hotmail.com>
 
 RUN  wget http://dl.bintray.com/mitchellh/vault/vault_0.1.2_linux_amd64.zip \
   && unzip vault_0.1.2_linux_amd64.zip \
