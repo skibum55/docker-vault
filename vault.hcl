@@ -1,5 +1,5 @@
 listener "tcp" {
-  address = "0.0.0.0:80"
+  address = "0.0.0.0:$PORT"
   tls_disable = 1
 }
 
